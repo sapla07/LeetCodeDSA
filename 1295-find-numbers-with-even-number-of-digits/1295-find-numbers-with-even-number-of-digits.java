@@ -5,20 +5,9 @@ class Solution {
         
         for(int i=0; i< nums.length; i++){
             
-            int temp = nums[i];
-            
-            int digitCount= 0;
-            
-            while(temp != 0){
-                digitCount++;
-                temp=temp/10;
-                
-            }
-            
-            if(digitCount%2 == 0){
+           if((nums[i]>9 && nums[i]<100) || (nums[i]>999 && nums[i]<10000) || nums[i]==100000){
                 countEven++;
             }
-            
         }
         
         return countEven;
