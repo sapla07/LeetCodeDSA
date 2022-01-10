@@ -2,22 +2,16 @@ class Solution {
     public int diagonalSum(int[][] mat) {
         
         int sum = 0;
-        
-        if(mat.length == 1){
-            return mat[0][0];
+        int n = mat.length;
+               
+        for(int i=0; i< n; i++ ){
+            sum += mat[i][i];
+            sum += mat[i][n-1-i];
         }
         
-        for(int i=0; i< mat.length; i++ ){
-            for(int j=0; j < mat[i].length; j++){
-                if( i == j || (i+j) == (mat.length-1)){
-                    sum += mat[i][j];
-                }   
-                
-                
-            }
+        if(n%2 != 0){
+            sum = sum - mat[n/2][n/2];
         }
-        
-        
         
         return sum;
     }
