@@ -6,10 +6,10 @@ class Solution {
         
         int[][] transpose = new int[col][row];
         
-        for(int i=0; i < col; i++){
-            for(int j=0 ; j < row; j++){
+        for(int i=0; i < row; i++){
+            for(int j=0 ; j < col; j++){
                 
-                transpose[i][j] = matrix[j][i];
+                transpose[j][i] = matrix[i][j];
                 
             }
         }
