@@ -1,24 +1,24 @@
 class Solution {
     public boolean halvesAreAlike(String s) {
-        int len = s.length();
-        String verify = "aeiouAEIOU";
+        Set<Character> set = new HashSet<>();
+        set.add('a');
+        set.add('e');
+        set.add('i');
+        set.add('o');
+        set.add('u');
+        set.add('A');
+        set.add('E');
+        set.add('I');
+        set.add('O');
+        set.add('U');
+        
+		//find the mid
+        int mid = s.length() / 2;
         int count = 0;
-        
-        for(int i=0; i< len; i++){
-            if( i < len/2){
-                if(verify.contains(s.charAt(i)+""))
-                    count++;
-            }
-            else{
-                if(verify.contains(s.charAt(i)+""))
-                    count--;
-            }
-        }
-        
-        if(count == 0)
-            return true;
-        else
-            return false;
-    
+        //increment the count for left half, decrement count for the second half if its a vowel
+		for (int i = 0; i < s.length(); i++)
+            count += (set.contains(s.charAt(i))) ? ((i < mid) ? 1 : -1) : 0; 
+        //finally count should be 0 to match left and right half
+		return count == 0;
     }
 }
