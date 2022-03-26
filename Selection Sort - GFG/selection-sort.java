@@ -32,21 +32,20 @@ class GFG
 
 class Solution
 {
-	int  select(int arr[], int i)
+	int  select(int arr[], int start, int end)
 	{
         // code here such that selectionSort() sorts arr[]
         
-        int min = Integer.MAX_VALUE, temp = i;
-        for(int j=i; j< arr.length; j++)
+        int max = start; 
+        for(int j=start; j<=end; j++)
         {
-            if(arr[j] <  min)
+            if(arr[max] < arr[j])
             {
-                min = arr[j];
-                temp = j;
+                max = j;
             }
         }
         
-        return temp;
+        return max;
         
 	}
 	
@@ -54,17 +53,19 @@ class Solution
 	{
 	    //code here
 	    
-	    int pos = 0;
-	    int temp = 0;
+	   for(int i=0; i< n; i++)
+	   {
+	       int last = n-i-1;
+	       int max_index = select(arr, 0, last);
+	       swap(arr, max_index, last);
+	   }
 	    
-	    while(pos < arr.length-1)
-	    {
-	        int min_pos = select(arr, pos);
-	        temp = arr[min_pos];
-	        arr[min_pos] = arr[pos];
-	        arr[pos] = temp;
-	        pos++;
-	    }
-	    
+	}
+	
+	void swap(int[] arr, int first, int second)
+	{
+	    int temp = arr[first];
+	    arr[first] = arr[second];
+	    arr[second] = temp;
 	}
 }
